@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./dist/falcon-benchmark.js"></script>
+</head>
+
+<body>
+    <script>
+        function f1(a, b) {
+            let total = 0;
+            for (let i = 0; i < b * 1000; i++) {
+                total += a * i;
+
+            }
+            return total
+        }
+
+        function f2(a, b) {
+            let total = 0;
+            for (let i = 0; i < b * 10000; i++) {
+                total += a * i;
+            }
+            return total
+        }
+
+        function isPrime(num) {
+            for (var i = 2; i < num; i++)
+                if (num % i === 0) return false;
+            return num !== 1;
+        }
+
+        function isPrime2(num) {
+            var sqrtnum = Math.floor(Math.sqrt(num));
+            var prime = num != 1;
+            for (var i = 2; i < sqrtnum + 1; i++) { // sqrtnum+1
+                if (num % i == 0) {
+                    prime = false;
+                    break;
+                }
+            }
+            return prime;
+        }
+
+
+        console.table(falcon.benchmark('f1', () => {
+            f1(2, 2);
+        }));
+        console.table(falcon.benchmark('f2', () => {
+            f2(2, 2);
+        }));
+
+        console.table(falcon.benchmark('isPrime', () => {
+            isPrime(123456789011121314123123123);
+        }));
+
+        console.table(falcon.benchmark('isPrime2', () => {
+            isPrime(123456789011121314123123123);
+        }));
+    </script>
+</body>
+
+</html>
