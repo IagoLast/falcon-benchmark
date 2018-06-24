@@ -47,20 +47,25 @@
         }
 
 
-        console.table(falcon.benchmark('f1', () => {
+        falcon.benchmark('f1', () => {
             f1(2, 2);
-        }));
-        console.table(falcon.benchmark('f2', () => {
+        });
+        falcon.benchmark('f2', () => {
             f2(2, 2);
-        }));
+        });
 
-        console.table(falcon.benchmark('isPrime', () => {
+        falcon.benchmark('isPrime', () => {
             isPrime(123456789011121314123123123);
-        }));
+        });
 
-        console.table(falcon.benchmark('isPrime2', () => {
+        falcon.benchmark('isPrime2', () => {
             isPrime(123456789011121314123123123);
-        }));
+        });
+
+        falcon.onTestComplete(console.table);
+        falcon.run();
+
+        const results = falcon.run();
     </script>
 </body>
 
