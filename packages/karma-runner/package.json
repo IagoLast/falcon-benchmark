@@ -1,0 +1,11 @@
+{
+  "name": "karma-falcon-benchmark",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "repository": "git@github.com:IagoLast/karma-falcon-benchmark.git",
+  "author": "IagoLast <iago.lastra@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "falcon-benchmark": "^0.1.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "falcon-benchmark",
+  "version": "0.1.0",
+  "description": "Javascript performance benchmark library",
+  "main": "dist/falcon-benchmark.js",
+  "repository": "git@github.com:IagoLast/falcon-benchmark.git",
+  "author": "IagoLast <iago.lastra@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "build:watch": "webpack -w --mode=development"
+  },
+  "dependencies": {
+    "mitt": "^1.1.3"
+  }
+}
