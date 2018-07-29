@@ -1,17 +1,19 @@
-function FalconReporter(baseReporterDecorator, config, logger, helper, formatError) {
+// parameters: baseReporterDecorator, config, logger, helper, formatError
+function FalconReporter(baseReporterDecorator) {
     baseReporterDecorator(this);
 
     this.onRunStart = function () {
         this._browsers = [];
-    }
+    };
 
     this.specSuccess = function (browser, test) {
         const result = test.result;
 
         this.write(`\n${test.description}:\t ${result.avg}\t  Variance:\t ${result.variance}`);
-    }
+    };
 
-    this.onRunComplete = function (browsers, results) {
+    // Parameters; browsers, results
+    this.onRunComplete = function () {
         this.write('\n');
     };
 }
