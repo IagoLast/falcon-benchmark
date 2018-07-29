@@ -12,7 +12,7 @@
                     description: test.name,
                     suite: [],
                     success: true,
-                    log: 'LOG',
+                    log: undefined, // Log with errors while running the test
                     skipped: test.skipped,
                     time: 1000,
                     result: result,
