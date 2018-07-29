@@ -3,8 +3,8 @@
     function createStartFn(karma) {
         return function () {
             karma.info({
-                total: falcon.getNumberOfTests(),
-            })
+                total: window.falcon.getNumberOfTests(),
+            });
 
             window.falcon.on('test-complete', function ({ test, result }) {
                 karma.result({
@@ -19,7 +19,7 @@
                 });
             });
 
-            window.falcon.on('suite-complete', function (suiteResult) {
+            window.falcon.on('suite-complete', function () {
                 karma.complete({
                     order: 1,
                     coverage: window.__coverage__
@@ -32,6 +32,6 @@
     }
 
 
-    window.__karma__.start = createStartFn(window.__karma__)
+    window.__karma__.start = createStartFn(window.__karma__);
 
 })(typeof window !== 'undefined' ? window : global);

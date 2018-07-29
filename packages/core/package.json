@@ -16,9 +16,9 @@
   "scripts": {
     "build:watch": "webpack -w --mode=development",
     "build": "webpack --mode=production",
-    "test": "babel-node test/_run.js",
+    "lint:fix": "eslint --fix lib/*.js",
     "lint": "eslint lib/*.js",
-    "lint:fix": "eslint --fix lib/*.js"
+    "test": "babel-node test/_run.js"
   },
   "dependencies": {
     "mitt": "^1.1.3"
