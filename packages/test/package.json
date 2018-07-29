@@ -11,9 +11,11 @@
     "karma-falcon-benchmark-reporter": "0.0.0"
   },
   "devDependencies": {
+    "babel-plugin-add-module-exports": "^0.3.2",
     "karma": "^2.0.5"
   },
   "scripts": {
-    "test": "karma start --single-run -browsers Chrome karma.conf.js"
+    "test": "karma start  --single-run --browsers Chrome karma.conf.js",
+    "test:watch": "karma start  --browsers Chrome karma.conf.js"
   }
 }
