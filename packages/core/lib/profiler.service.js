@@ -14,7 +14,7 @@ export function profile(fn, options) {
   fn.call(this);
   const end = performance.now();
   if (options && options.after) {
-    options.before.call(this);
+    options.after.call(this);
   }
   return end - start;
 }
