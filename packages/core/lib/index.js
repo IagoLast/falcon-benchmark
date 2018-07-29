@@ -1,10 +1,10 @@
-import mitt from 'mitt'
+import mitt from 'mitt';
 import profiler from './profiler.service';
 
 const EVENTS = {
     TEST_COMPLETE: 'test-complete',
     SUITE_COMPLETE: 'suite-complete'
-}
+};
 const emitter = mitt();
 const tests = [];
 
