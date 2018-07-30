@@ -198,6 +198,7 @@ class FalconRunner {
       for (let i = 0; i < runs; i++) {
         const time = await _profiler_service__WEBPACK_IMPORTED_MODULE_1__["default"].profile(fn, options);
         executions.push(time);
+        this._emitter.emit(_events__WEBPACK_IMPORTED_MODULE_2__["default"].RUN_COMPLETE);
       }
 
       result = _profiler_service__WEBPACK_IMPORTED_MODULE_1__["default"].getStats(executions);
@@ -223,8 +224,9 @@ class FalconRunner {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  TEST_COMPLETE: 'test-complete',
+  RUN_COMPLETE: 'run-complete',
   SUITE_COMPLETE: 'suite-complete',
+  TEST_COMPLETE: 'test-complete',
   TEST_FAILED: 'test-failed'
 });
 

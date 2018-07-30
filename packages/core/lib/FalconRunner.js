@@ -87,6 +87,7 @@ export class FalconRunner {
       for (let i = 0; i < runs; i++) {
         const time = await profiler.profile(fn, options);
         executions.push(time);
+        this._emitter.emit(EVENTS.RUN_COMPLETE);
       }
 
       result = profiler.getStats(executions);

@@ -43,6 +43,10 @@
         });
       });
 
+      window.falcon.on('run-complete', function () {
+        karma.info('completed run');
+      });
+
 
       window.falcon.run();
     };
