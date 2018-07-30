@@ -166,11 +166,11 @@ class FalconRunner {
   /**
    * Run all the specs
    */
-  run() {
+  async run() {
     const results = [];
     while (this._tests.length) {
       const test = this._tests.shift();
-      const result = test.skipped ? {} : this.runBenchmark(test.name, test.fn, test.options);
+      const result = test.skipped ? {} : await this.runBenchmark(test.name, test.fn, test.options);
       if (result.error) {
         this._emitter.emit(_events__WEBPACK_IMPORTED_MODULE_2__["default"].TEST_FAILED, { test, result });
       } else {
@@ -189,14 +189,14 @@ class FalconRunner {
    * @param {object} options 
    * @param {number} options.runs - Number of cycles to execute the funcion 
    */
-  runBenchmark(name, fn, options = {}) {
+  async runBenchmark(name, fn, options = {}) {
     let result;
     try {
       const { runs = 5000 } = options;
       const executions = [];
 
       for (let i = 0; i < runs; i++) {
-        const time = _profiler_service__WEBPACK_IMPORTED_MODULE_1__["default"].profile(fn, options);
+        const time = await _profiler_service__WEBPACK_IMPORTED_MODULE_1__["default"].profile(fn, options);
         executions.push(time);
       }
 
@@ -261,12 +261,12 @@ const performance = _utils_service__WEBPACK_IMPORTED_MODULE_0__["default"].perfo
  * Computes the time needed to run the function
  * @param {function} fn 
  */
-function profile(fn, options) {
+async function profile(fn, options) {
   if (options && options.before) {
     options.before.call(this);
   }
   const start = performance.now();
-  fn.call(this);
+  await fn.call(this);
   const end = performance.now();
   if (options && options.after) {
     options.after.call(this);

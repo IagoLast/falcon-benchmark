@@ -55,11 +55,11 @@ export class FalconRunner {
   /**
    * Run all the specs
    */
-  run() {
+  async run() {
     const results = [];
     while (this._tests.length) {
       const test = this._tests.shift();
-      const result = test.skipped ? {} : this.runBenchmark(test.name, test.fn, test.options);
+      const result = test.skipped ? {} : await this.runBenchmark(test.name, test.fn, test.options);
       if (result.error) {
         this._emitter.emit(EVENTS.TEST_FAILED, { test, result });
       } else {
@@ -78,14 +78,14 @@ export class FalconRunner {
    * @param {object} options 
    * @param {number} options.runs - Number of cycles to execute the funcion 
    */
-  runBenchmark(name, fn, options = {}) {
+  async runBenchmark(name, fn, options = {}) {
     let result;
     try {
       const { runs = 5000 } = options;
       const executions = [];
 
       for (let i = 0; i < runs; i++) {
-        const time = profiler.profile(fn, options);
+        const time = await profiler.profile(fn, options);
         executions.push(time);
       }
 

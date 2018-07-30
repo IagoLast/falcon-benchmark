@@ -1,13 +1,11 @@
-benchmark('.function', () => {
+benchmark('sync function', () => {
+  this.array = new Float32Array(100);
   this.array.fill(100);
-},
-{
-  before: () => {
-    console.log('Before');
-    this.array = new Float32Array(100);
-  },
-  after: () => {
-    this.array = undefined;
-    console.log('After');
-  }
 });
+
+
+benchmark('async function', () => {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, 20);
+  });
+}, { runs: 100 });

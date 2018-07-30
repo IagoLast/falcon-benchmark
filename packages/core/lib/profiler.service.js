@@ -6,12 +6,12 @@ const performance = utils.performance;
  * Computes the time needed to run the function
  * @param {function} fn 
  */
-export function profile(fn, options) {
+export async function profile(fn, options) {
   if (options && options.before) {
     options.before.call(this);
   }
   const start = performance.now();
-  fn.call(this);
+  await fn.call(this);
   const end = performance.now();
   if (options && options.after) {
     options.after.call(this);

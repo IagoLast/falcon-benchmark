@@ -8,10 +8,11 @@ describe('profiler.service', () => {
   };
 
   describe('.profile', () => {
-    it('should return the tame taken to execute a function', () => {
-      const actual = profiler.profile(fn);
-
-      expect(actual).toBeGreaterThan(0);
+    it('should return the tame taken to execute a function', done => {
+      profiler.profile(fn).then(actual => {
+        expect(actual).toBeGreaterThan(0);
+        done();
+      });
     });
   });
 
