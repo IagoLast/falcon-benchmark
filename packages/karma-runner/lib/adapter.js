@@ -3,6 +3,9 @@
   window.falcon = new window.FalconBenchmark();
   // Expose "benchmark" function in the global namespace.
   window.benchmark = window.falcon.benchmark.bind(window.falcon);
+  // Expose "xbenchmark" function in the global namespace.
+  window.xbenchmark = window.falcon.xbenchmark.bind(window.falcon);
+
 
   function createStartFn(karma) {
     return function () {

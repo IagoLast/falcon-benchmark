@@ -9,3 +9,11 @@ benchmark('async function', () => {
     setTimeout(resolve, 20);
   });
 }, { runs: 100 });
+
+benchmark('failed function', () => {
+  throw new Error('Error message');
+});
+
+xbenchmark('skipped function', () => {
+  console.warn('Skipped!');
+});
