@@ -9,7 +9,7 @@
     "lint:fix": "lerna run lint:fix",
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap --hoist",
-    "release": "lerna run release",
+    "publish": "lerna publish",
     "test:watch": "lerna run test:watch",
     "test": "lerna run test"
   }
