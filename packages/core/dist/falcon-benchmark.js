@@ -265,13 +265,13 @@ const performance = _utils_service__WEBPACK_IMPORTED_MODULE_0__["default"].perfo
  */
 async function profile(fn, options) {
   if (options && options.before) {
-    options.before.call(this);
+    await options.before.call(this);
   }
   const start = performance.now();
   await fn.call(this);
   const end = performance.now();
   if (options && options.after) {
-    options.after.call(this);
+    await options.after.call(this);
   }
   return end - start;
 }

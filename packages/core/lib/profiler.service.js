@@ -8,13 +8,13 @@ const performance = utils.performance;
  */
 export async function profile(fn, options) {
   if (options && options.before) {
-    options.before.call(this);
+    await options.before.call(this);
   }
   const start = performance.now();
   await fn.call(this);
   const end = performance.now();
   if (options && options.after) {
-    options.after.call(this);
+    await options.after.call(this);
   }
   return end - start;
 }

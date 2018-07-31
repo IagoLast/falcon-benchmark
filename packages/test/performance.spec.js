@@ -3,7 +3,6 @@ benchmark('sync function', () => {
   this.array.fill(100);
 });
 
-
 benchmark('async function', () => {
   return new Promise(function (resolve) {
     setTimeout(resolve, 20);
@@ -16,4 +15,16 @@ benchmark('failed function', () => {
 
 xbenchmark('skipped function', () => {
   console.warn('Skipped!');
+});
+
+benchmark('async function initialization', () => {
+  this.array.fill(100);
+}, {
+  runs: 100,
+  before: () => {
+    return new Promise(resolve => {
+      this.array = new Float32Array(100);
+      setTimeout(resolve, 0);
+    });
+  }
 });
