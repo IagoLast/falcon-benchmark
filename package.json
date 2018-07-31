@@ -6,10 +6,11 @@
   },
   "scripts": {
     "build": "lerna run build",
-    "postinstall": "lerna bootstrap --hoist",
-    "test": "lerna run test",
-    "test:watch": "lerna run test:watch",
+    "lint:fix": "lerna run lint:fix",
     "lint": "lerna run lint",
-    "lint:fix": "lerna run lint:fix"
+    "postinstall": "lerna bootstrap --hoist",
+    "release": "lerna run release",
+    "test:watch": "lerna run test:watch",
+    "test": "lerna run test"
   }
 }
